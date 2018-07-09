@@ -1,4 +1,4 @@
-package org.struts.app;
+package com.chinasofti.app;
 
 public class App {
 

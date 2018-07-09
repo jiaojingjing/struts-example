@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.chinasofi</groupId>
+  <artifactId>struts-example</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>struts-example</name>
+  <description>struts基本设置</description>
+
+  <properties>
+    <struts2.version>2.5.16</struts2.version>
+    <spring.version>4.3.17.RELEASE</spring.version>
+    <mybatis.version>3.4.6</mybatis.version>
+    <slf4j.version>1.7.25</slf4j.version>
+    <log4j2.version>2.11.0</log4j2.version>
+    <fastjson.version>1.2.47</fastjson.version>
+    <servlet.version>3.1.0</servlet.version>
+    <jsp.version>2.2</jsp.version>
+    <jstl.version>1.2</jstl.version>
+    <jansi.verison>1.17.1</jansi.verison>
+    <junit.verison>4.12</junit.verison>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- spring一次性设置版本号 -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-framework-bom</artifactId>
+        <version>${spring.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.struts</groupId>
+        <artifactId>struts2-bom</artifactId>
+        <version>${struts2.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-bom</artifactId>
+        <version>${log4j2.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+
+      <!-- servlet jsp jstl -->
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>${servlet.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet.jsp</groupId>
+        <artifactId>jsp-api</artifactId>
+        <version>${jsp.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>${jstl.version}</artifactId>
+        <version>1.2</version>
+      </dependency>
+
+      <!-- json -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastjson.version}</version>
+      </dependency>
+      <!-- 日志 -->
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.25</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>jcl-over-slf4j</artifactId>
+        <version>1.7.25</version>
+        <scope>runtime</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.fusesource.jansi</groupId>
+        <artifactId>jansi</artifactId>
+        <version>1.17.1</version>
+      </dependency>
+
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.verison}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-junit</artifactId>
+        <version>2.0.0.0</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <!-- jetty -->
+        <plugin>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-maven-plugin</artifactId>
+          <version>9.4.7.v20170914</version>
+          <configuration>
+            <webApp>
+              <!-- <contextPath>/${project.build.finalName}</contextPath> -->
+              <contextPath>/</contextPath>
+            </webApp>
+            <stopKey>CTRL+C</stopKey>
+            <stopPort>8999</stopPort>
+            <scanIntervalSeconds>10</scanIntervalSeconds>
+            <scanTargets>
+              <scanTarget>src/main/webapp/WEB-INF/web.xml</scanTarget>
+            </scanTargets>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-archetype-plugin</artifactId>
+          <version>3.0.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.7.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.1</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <!-- 子项目 -->
+  <modules>
+    <module>struts-helloworld</module>
+  </modules>
+</project>

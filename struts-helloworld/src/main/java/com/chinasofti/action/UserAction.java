@@ -5,6 +5,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class UserAction extends ActionSupport{
 
+	private static final long serialVersionUID = 6554123600783176159L;
+
 	private String username;
 	
 	private String password;

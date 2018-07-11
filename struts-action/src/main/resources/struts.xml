@@ -4,12 +4,23 @@
     "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
 
-  <constant name="struts.devMode" value="true" />
+  <!-- 默认样式为简单 -->
+  <constant name="struts.ui.theme" value="simple"/>
 
-  <package name="exmaple" extends="struts-default" namespace="/">
-    <action name="hello" class="com.chinasofti.action.HelloAction" method="execute">
-      <result name="success">/WEB-INF/view/hello.jsp</result>
-    </action>
+  <!-- 开发模式 -->
+  <constant name="struts.devMode" value="true" />
+  
+  <!-- 注解默认扫描包 -->
+  <constant name="strutsnvention.package.locators" value="action" />
+  
+  <!-- 设置默认结果页面查找路径 -->
+  <constant name="struts.convention.result.path" value="/WEB-INF/view/"/>
+
+  <!-- 默认包 -->
+  <constant name="struts.convention.default.parent.package" value="default" />
+  <package name="default" extends="struts-default">
+  
   </package>
+
 
 </struts>

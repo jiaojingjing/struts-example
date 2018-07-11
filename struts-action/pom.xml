@@ -8,18 +8,20 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>struts-helloworld</artifactId>
-
+  <artifactId>struts-action</artifactId>
   <packaging>war</packaging>
 
-
   <dependencies>
-
     <dependency>
       <groupId>org.apache.struts</groupId>
       <artifactId>struts2-core</artifactId>
     </dependency>
-    
+
+    <dependency>
+      <groupId>org.apache.struts</groupId>
+      <artifactId>struts2-convention-plugin</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>org.apache.struts</groupId>
       <artifactId>struts2-config-browser-plugin</artifactId>
@@ -28,6 +30,7 @@
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
+      <version>${servlet.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -36,6 +39,10 @@
       <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+    </dependency>
     <!-- json -->
     <dependency>
       <groupId>com.alibaba</groupId>
@@ -68,21 +75,9 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <!-- 一次性设置所有spring的版本号 -->
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-framework-bom</artifactId>
-        <version>${spring.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
 
   <build>
-    <finalName>struts-helloworld</finalName>
+    <finalName>struts-action</finalName>
   </build>
 
 </project>
